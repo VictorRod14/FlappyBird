@@ -37,7 +37,7 @@ function updateBird() {
   }
 }
 
-function jump() {
+function jump(event) {
   if (gameStarted) {
     bird.velocity = jumpStrength;
   }
@@ -156,23 +156,10 @@ function startGame() {
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startGame);
 
-// Corrigir o evento touchstart para mobile
+document.addEventListener('keydown', jump);
+
+
 canvas.addEventListener('touchstart', (event) => {
   event.preventDefault();  
-  if (gameOver) {
-    startGame();  
-  } else {
-    jump();  
-  }
-});
-
-
-window.addEventListener('keydown', (event) => {
-  if (event.key === ' ' || event.key === 'Backspace') {  
-    if (gameOver) {
-      startGame();  
-    } else {
-      jump();  
-    }
-  }
+  jump(event);
 });
