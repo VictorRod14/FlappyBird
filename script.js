@@ -156,7 +156,7 @@ function startGame() {
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startGame);
 
-
+// Corrigir o evento touchstart para mobile
 canvas.addEventListener('touchstart', (event) => {
   event.preventDefault();  
   if (gameOver) {
@@ -166,3 +166,13 @@ canvas.addEventListener('touchstart', (event) => {
   }
 });
 
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === ' ' || event.key === 'Backspace') {  
+    if (gameOver) {
+      startGame();  
+    } else {
+      jump();  
+    }
+  }
+});
