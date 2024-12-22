@@ -7,8 +7,8 @@ canvas.height = 600;
 let bird = {
   x: 50,
   y: 150,
-  width: 20,
-  height: 20,
+  width: 30,
+  height: 30,
   velocity: 0,
 };
 
@@ -37,7 +37,7 @@ function updateBird() {
   }
 }
 
-function jump(event) {
+function jump() {
   if (gameStarted) {
     bird.velocity = jumpStrength;
   }
@@ -156,10 +156,13 @@ function startGame() {
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startGame);
 
-document.addEventListener('keydown', jump);
-
 
 canvas.addEventListener('touchstart', (event) => {
   event.preventDefault();  
-  jump(event);
+  if (gameOver) {
+    startGame();  
+  } else {
+    jump();  
+  }
 });
+
