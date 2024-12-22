@@ -1,3 +1,1 @@
-# FlappyBirdJs
-# FlappyBirdJs
 # FlappyBirdsJs
